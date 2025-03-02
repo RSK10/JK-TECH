@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "username": "Admin Main 123",
+      "password": "admin123",
+      "role": "admin",
+      "id": "04c3",
+      "createdDate": "03-02-2025 12:15:05 PM",
+      "modifiedDate": "03-02-2025 01:20:04 PM",
+      "description": ""
+    },
+    {
+      "email": "kadarramzan@gmail.com",
+      "username": "Ramzan Kadar",
+      "password": "12345676",
+      "role": "user",
+      "id": "a97d",
+      "createdDate": "03-01-2025 11:04:18 PM",
+      "modifiedDate": "03-02-2025 11:25:59 AM",
+      "description": "Developer"
+    },
+    {
+      "id": "7cd8",
+      "email": "superuser@gmail.com",
+      "username": "Super User",
+      "password": "suoeruser123",
+      "role": "super user",
+      "createdDate": "03-02-2025 01:15:06 PM",
+      "modifieddDate": "03-02-2025 01:15:06 PM",
+      "description": ""
+    }
+  ],
+  "Documents": [
+    {
+      "id": "c97a",
+      "fileName": "Ramzan Kadar - Resume.pdf",
+      "description": "Document 1",
+      "addedBy": "admin"
+    }
+  ]
+}
