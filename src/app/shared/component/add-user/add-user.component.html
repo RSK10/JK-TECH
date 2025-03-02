@@ -1,0 +1,81 @@
+<div class="login-container display-flex justify-content-center" [ngClass]="!isAdmin ? 'login-bg' : ''">
+
+  <p-card class="sign-up-card">
+    <div class="p-fluid p-3">
+      <h3 class="text-center mb-3">{{title}}</h3>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" class="display-flex justify-content-between flex-column">
+        <div>
+          <!-- Email Field -->
+          <div class="p-fluid mb-4 mt-3">
+            <p-floatLabel>
+              <input id="email" type="email" pInputText formControlName="email" />
+              <label for="email">Email <span class="mandatory">*</span></label>
+              <p-message class="mt-2" severity="error"
+                *ngIf="signUpForm.controls['email'].hasError('email') && signUpForm.controls['email'].touched"
+                text="Please enter a valid email address">
+              </p-message>
+            </p-floatLabel>
+          </div>
+
+          <!-- Username Field -->
+          <div class="p-fluid mb-4 mt-3">
+            <p-floatLabel>
+              <input formControlName="username" pInputText class="form-field">
+              <label for="username">Username <span class="mandatory">*</span></label>
+            </p-floatLabel>
+          </div>
+
+          <!-- Password Field -->
+          <div class="p-fluid mb-4 mt-3">
+            <p-floatLabel>
+              <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
+              </p-password>
+              <label for="password">Password <span class="mandatory">*</span></label>
+              <p-message class="mt-2"
+                *ngIf="signUpForm.controls['password'].hasError('minlength') && signUpForm.controls['password'].touched"
+                severity="error" text="Password must be at least 6 characters."></p-message>
+            </p-floatLabel>
+          </div>
+
+          <!-- Role Dropdown (only if admin) -->
+          <div class="p-fluid mb-4 mt-3" *ngIf="isAdmin">
+            <p-floatLabel>
+              <p-dropdown id="role" formControlName="role" [options]="roles" optionLabel="name"
+                [autoDisplayFirst]="true" appendTo="body"></p-dropdown>
+              <label for="role">Role <span class="mandatory">*</span></label>
+              <p-message class="mt-2"
+                *ngIf="signUpForm.controls['role'].hasError('required') && signUpForm.controls['role'].touched"
+                severity="error" text="Role cannot be empty">
+              </p-message>
+            </p-floatLabel>
+          </div>
+
+          <div class="p-fluid mb-4 mt-2">
+            <p-floatLabel>
+              <textarea rows="5" cols="30" pInputTextarea formControlName="description">
+           </textarea>
+              <label for="description">Description</label>
+            </p-floatLabel>
+          </div>
+          <!-- Submit Button -->
+          <p-button *ngIf="title == 'Sign Up'" label="Sign Up" type="submit" class="p-button">
+          </p-button>
+
+          <input type="date" hidden="true" formControlName="createdDate">
+          <input type="date" hidden="true" formControlName="modifieddDate">
+
+        </div>
+
+        <p-button *ngIf="title == 'Add User'" label="Add User" type="submit" class="p-button">
+        </p-button>
+      </form>
+
+      <!-- Login Link (only for Sign Up) -->
+      <div *ngIf="title == 'Sign Up'" class="login-link text-center mt-3">
+        <h6>Already have an account? <a href="/login">Login</a></h6>
+      </div>
+    </div>
+  </p-card>
+
+
+  <p-toast position="top-right" key="ct"></p-toast>

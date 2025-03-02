@@ -1,0 +1,49 @@
+<div *ngIf="!isAuthenticated">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="sidepanel-container" *ngIf="isAuthenticated">
+  <!-- Side Navigation -->
+  <div class="sidepanel" [ngStyle]="!sidebarVisible ? {'background': '#184f6b'} : {}">
+    <p-sidebar [(visible)]="sidebarVisible" [modal]="false" [showCloseIcon]="false" class="h-100 main-menu-side-bar">
+      <ul class="main-menu">
+        <li routerLink="/dashboard" routerLinkActive="active">
+          <i class="pi pi-home"></i>
+          <a>Dashboard</a>
+        </li>
+        <li routerLink="/users" routerLinkActive="active">
+          <i class="pi pi-users"></i>
+          <a>User Management</a>
+        </li>
+        <li routerLink="/documents" routerLinkActive="active">
+          <i class="pi pi-file"></i>
+          <a>Documents</a>
+        </li>
+        <li routerLink="/profile" routerLinkActive="active">
+          <i class="pi pi-user"></i>
+          <a>Profile</a>
+        </li>
+      </ul>
+
+    </p-sidebar>
+    <div class="menu-expand-container display-flex justify-content-end">
+      <p-button *ngIf="!sidebarVisible" (onClick)="sidebarVisible = true" icon="pi pi-angle-double-right"
+        class="w-12" />
+      <p-button *ngIf="sidebarVisible" (onClick)="sidebarVisible = false" icon="pi pi-angle-double-left" class="w-12" />
+    </div>
+
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="isAuthenticated" class="w-100 h-100">
+    <div class="p-card custom-card m-3 h-100">
+      <app-header></app-header>
+      <div class="p-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p-toast position="top-right" key="ct" />

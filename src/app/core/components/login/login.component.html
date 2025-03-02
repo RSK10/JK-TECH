@@ -1,0 +1,40 @@
+<div class="login-container display-flex justify-content-center" [ngClass]="!isAdmin ? 'login-bg' : ''">
+  <p-card class="login-card">
+    <div class="p-fluid  p-3">
+      <h3 class="text-center mb-2">Login</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <!-- Email Field -->
+        <div class="p-fluid mb-4 mt-2">
+          <p-floatLabel>
+            <input id="email" type="email" pInputText formControlName="email" />
+            <label for="email">Email <span class="mandatory">*</span></label>
+            <p-message class="mt-2" severity="error"
+              *ngIf="loginForm.controls['email'].hasError('email') && loginForm.controls['email'].touched"
+              text="Please enter a valid email address">
+            </p-message>
+          </p-floatLabel>
+        </div>
+        <!-- Password Field -->
+        <div class="p-fluid mb-4 mt-2">
+          <p-floatLabel>
+            <p-password formControlName="password" inputId="password" [toggleMask]="true"
+              [feedback]="false"></p-password>
+            <label for="password">Password <span class="mandatory">*</span></label>
+            <p-message class="mt-2"
+              *ngIf="loginForm.controls['password'].hasError('minlength') && loginForm.controls['password'].touched"
+              severity="error" text="Password must be at least 6 characters."></p-message>
+          </p-floatLabel>
+        </div>
+
+        <!-- Submit Button -->
+        <p-button label="Login" class="p-button" type="submit"></p-button>
+      </form>
+
+      <!-- Sign Up Link -->
+      <div class="signup-link mt-3 text-center">
+        <h6>Don't have an account? <a routerLink="/signup" label="Sign Up" class="signup-text">Sign Up</a></h6>
+      </div>
+    </div>
+  </p-card>
+</div>
+<p-toast position="top-right" key="lt" />

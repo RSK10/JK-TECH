@@ -1,0 +1,47 @@
+.profile-card {
+  width: 100%;
+  max-width: 600px;
+}
+
+::ng-deep .profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .p-avatar.p-component {
+    height: 200px !important;
+    width: 200px !important;
+
+    .p-avatar-icon {
+      font-size: 8rem;
+    }
+  }
+}
+
+.profile-header p-avatar {
+  margin-right: 20px;
+}
+
+.profile-body p {
+  font-size: 1rem;
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: calc(100vh - 127px);
+  flex-direction: column;
+}
+
+.info-container {
+  padding: 8px;
+  border: 1px solid #8080804f;
+  border-radius: 10px;
+  height: calc(100vh - 410px);
+}
+
+.info-header {
+  padding: 10px;
+  background: #184f6b26;
+}

@@ -1,0 +1,69 @@
+<!-- <mat-card class="profile-card">
+    <mat-card-header class="profile-header">
+        <div mat-card-avatar class="profile-avatar"></div>
+        <mat-card-title>{{ user?.username }}</mat-card-title>
+        <mat-card-subtitle>Role: {{ user?.role }} <br>Member Since: {{user?.createdDate}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+        <div class="profile-info">
+            
+            <h4>Bio</h4>
+            <p>Software Developer</p>
+    
+            <h4>Contact</h4>
+            <p><strong>Email:</strong> {{ user?.email }}</p>
+            <p><strong>Created by:</strong> admin</p>
+        
+        </div>
+    </mat-card-content>
+    
+    <mat-card-actions>
+        <button mat-raised-button (click)="logOut()">Logout</button>
+    </mat-card-actions>
+</mat-card>
+     -->
+
+<div class="profile-container">
+    <!-- Profile Card -->
+    <div styleClass="profile-card">
+        <div class="profile-header">
+            <p-avatar icon="pi pi-user"></p-avatar>
+            <div class="profile-body">
+                <div class="profile-info">
+                    <p><b>Username:</b> {{ user.username }}</p>
+                    <p><b>Email:</b> {{ user.email }}</p>
+                    <p><b>Role:</b> {{ user.role }}</p>
+                    <p><b>Date Created:</b> {{ user.createdDate }}</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="info-container">
+                <div class="info-header">
+                    <h4>Description</h4>
+                </div>
+                <div class="p-2">
+                    <p *ngIf="user.description">{{ user.description }}</p>
+                </div>
+
+                <div *ngIf="!user.description" class="text-center">
+                    <div class="info-message">
+                        <div class="info-icon">
+                            <i class="pi pi-info-circle"></i>
+                        </div>
+                        <div class="info-text">
+                            There is no descrption present on this user.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="display-flex justify-content-end">
+        <p-button label="Logout" icon="pi pi-sign-out" severity="danger"
+            class="p-button-danger p-button-rounded p-button-lg" (click)="logOut()">
+        </p-button>
+    </div>
+</div>

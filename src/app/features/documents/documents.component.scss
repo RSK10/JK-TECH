@@ -1,0 +1,77 @@
+::ng-deep {
+  .p-datatable {
+    tr {
+      text-align: left;
+      border: 1px solid #e5e7eb !important;
+    }
+
+    th {
+      color: #184f6b;
+      padding: 0.5rem 0.2rem;
+
+    }
+
+    td {
+      padding: 0.5rem 0.2rem;
+    }
+
+    i {
+      color: #184f6b;
+      cursor: pointer;
+    }
+  }
+
+  .p-menu-list {
+    margin: 0px;
+    padding: 0px;
+
+    .p-menuitem-link {
+      text-decoration: none;
+      padding: 0.7rem 1rem;
+
+      span {
+        color: #184f6b;
+      }
+    }
+  }
+
+  .p-dialog-header {
+    padding: 5px 5px 0px 5px;
+  }
+
+  .p-confirm-dialog {
+    background: #fff;
+    border-radius: 12px;
+
+    .p-button {
+      width: 150px;
+    }
+
+    p {
+      color: #184f6b;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    div {
+      text-align: center;
+    }
+
+    .border-circle {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      margin: auto;
+      margin-bottom: 10px;
+      background-color: #184f6b !important;
+
+      i {
+        font-size: 40px;
+        color: #fff;
+      }
+
+    }
+  }
+
+}

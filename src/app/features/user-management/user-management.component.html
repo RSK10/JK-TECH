@@ -1,0 +1,127 @@
+<div class="user-management-container">
+  <div class="mb-3 display-flex justify-content-end">
+    <button pButton *ngIf="showActionButtons" (click)="addUserDialogVisible = true">Add User</button>
+  </div>
+  <p-table styleClass="p-datatable-striped" [value]="users" [tableStyle]="{ 'table-layout': 'fixed' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Sr. No.</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th *ngIf="showActionButtons || isSuperUser" class="text-center">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user let-rowIndex="rowIndex">
+      <tr>
+        <td>{{ rowIndex + 1}}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td *ngIf="showActionButtons || isSuperUser" class="text-center ">
+          <p-menu #menu [model]="items" [popup]="true" appendTo="body" />
+          <span><i (click)="selectUser($event ,user)" class="pi pi-ellipsis-h"></i></span>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>
+
+<!-- EDIT USER SIDEBAR -->
+<div *ngIf="editSidebarVisible">
+  <p-sidebar [(visible)]="editSidebarVisible" position="right" [showCloseIcon]="false" class="edit-add-sidebar">
+    <ng-template pTemplate="header">
+      <span>Edit User</span>
+    </ng-template>
+    <form [formGroup]="userForm" (ngSubmit)="editUser()" class="display-flex justify-content-between flex-column h-100">
+      <div class="w-100">
+        <div class="p-fluid mb-4 mt-5">
+          <p-floatLabel>
+            <input id="email" type="email" pInputText formControlName="email" />
+            <label for="email">Email <span class="mandatory">*</span></label>
+            <p-message class="mt-2" severity="error"
+              *ngIf="userForm.controls['email'].hasError('email') && userForm.controls['email'].touched"
+              text="Please enter a valid email address">
+            </p-message>
+          </p-floatLabel>
+        </div>
+        <div class="p-fluid mb-4 mt-2">
+          <p-floatLabel>
+            <input formControlName="username" inputId="username" type="text" pInputText />
+            <label for="username">Username <span class="mandatory">*</span></label>
+            <p-message class="mt-2"
+              *ngIf="userForm.controls['username'].hasError('required') && userForm.controls['username'].touched"
+              severity="error" text="Username is required.">
+            </p-message>
+          </p-floatLabel>
+        </div>
+        <div class="p-fluid mb-4 mt-2">
+          <p-floatLabel>
+            <p-dropdown id="role" formControlName="role" [options]="roleOptions" optionLabel="name"
+              [ngClass]="isRoleReadOnly ? 'field-readonly' : ''" [readonly]="isRoleReadOnly"></p-dropdown>
+            <label for="role">Role <span class="mandatory">*</span></label>
+            <p-message class="mt-2"
+              *ngIf="userForm.controls['role'].hasError('required') && userForm.controls['role'].touched"
+              severity="error" text="Role cannot be empty">
+            </p-message>
+          </p-floatLabel>
+        </div>
+        <div class="p-fluid mb-4 mt-2">
+          <p-floatLabel>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="description">
+         </textarea>
+            <label for="description">Description</label>
+          </p-floatLabel>
+        </div>
+        <input type="date" hidden="true" formControlName="createdDate">
+
+        <input type="date" hidden="true" formControlName="modifieddDate">
+
+        <input type="password" hidden="true" formControlName="password">
+      </div>
+      <div class="display-flex justify-content-between w-100">
+        <button pButton type="button" label="Cancel" [outlined]="true"
+          (click)="this.editSidebarVisible = false"></button>
+        <button pButton type="submit" label="Save Changes" [disabled]="userForm.invalid" class="p-mt-3"></button>
+      </div>
+
+    </form>
+  </p-sidebar>
+</div>
+
+<p-sidebar position="right" [showCloseIcon]="true" class="edit-add-sidebar">
+  <ng-template pTemplate="header">
+    <span>{{modalTitle}}</span>
+  </ng-template>
+
+</p-sidebar>
+<p-dialog [(visible)]="addUserDialogVisible" [modal]="true" [style]="{ width: '25rem' }" position="bottom"
+  draggable="false">
+  <app-add-user *ngIf="addUserDialogVisible" [title]="modalTitle" (closeDialog)="onSave($event)"></app-add-user>
+</p-dialog>
+
+<!-- DELET USE DIALOG -->
+<div class="card flex justify-content-center">
+  <p-confirmDialog #cd>
+    <ng-template pTemplate="headless" let-message>
+      <div class="flex flex-column align-items-center p-4">
+        <div class="border-circle bg-primary inline-flex justify-content-center align-items-center">
+          <i class="pi pi-trash"></i>
+        </div>
+        <p class="font-bold mb-2 mt-4">
+          {{ message.header }}
+        </p>
+        <p class="mb-0">{{ message.message }}</p>
+        <div class="display-flex align-items-center gap-2 mt-4 justify-content-evenly">
+          <button pButton label="Yes" (click)="cd.accept()" class="w-6">
+          </button>
+          <button pButton label="No" (click)="cd.reject()" class="p-button-outlined w-6">
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </p-confirmDialog>
+</div>
+
+<p-toast position="top-right" key="um"></p-toast>

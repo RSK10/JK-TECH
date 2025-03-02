@@ -1,0 +1,29 @@
+.dashboard-card {
+    margin: 20px;
+}
+
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 40px 10px;
+    background: transparent;
+}
+
+.graph-card {
+    height: 300px;
+}
+
+mat-card-header {
+    border-bottom: 1px solid #ccc;
+}
+
+mat-card-title {
+    font-weight: bold;
+    color: #333;
+}
+
+::ng-deep canvas {
+    width: 550px !important;
+    height: 550px !important;
+}

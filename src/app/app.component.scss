@@ -1,0 +1,75 @@
+::ng-deep .sidepanel-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    .sidepanel{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+   
+    .menu-expand-container{
+      background:#184f6b;
+      button{
+        &:hover{
+          background: none;
+          border: none;
+        }
+      }
+    }
+
+    ul.main-menu {
+      padding: 0px;
+    }
+    ul.main-menu li {
+      list-style: none;
+      padding: 10px;
+      border-bottom: 1px solid #0000001f;
+      cursor: pointer;
+      a{
+        text-decoration: none;
+        color: #0000008a;
+        margin-left: 5px;
+      }
+      i{
+        color: #184f6b;
+      }
+
+      &:hover , &.active{
+        background:#184f6b ;
+        a , i{
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+
+    .main-menu-side-bar{    
+      .p-sidebar {
+        position: relative !important;
+      }
+
+      .p-sidebar-content {
+        padding: 0px;
+      }
+
+      .p-sidebar-header {
+        border-bottom: 1px solid #0000001f;
+      }
+  
+      .p-sidebar-active {
+        z-index: 1 !important;
+      }
+    }
+    
+    .custom-card{
+      height: calc(100vh - 30px) !important;
+      box-shadow: 0px -4px 7px 0px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+      border-radius: 0px;
+    }
+  }
+  
+
+  

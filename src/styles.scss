@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+@import "node_modules/primeng/resources/primeng.min.css";
+@import "primeng/resources/primeng.css";
+@import "node_modules/primeicons/primeicons.css";
+@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.display-flex {
+    display: flex;
+    align-items: center;
+}
+
+.login-container {
+    height: 100vh;
+
+    &.login-bg{
+        background-image: url('assets/login.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    .login-card,
+    .sign-up-card {
+        width: 500px;
+        display: block;
+    }
+
+    .p-card{
+        background: #ffffffa1;
+    }
+}
+
+p-button {
+    padding: 0px;
+}
+
+button{
+    &.p-button{
+        background-color: #184f6b !important;
+        border-color: #184f6b !important;
+        border-radius: 6px;
+    }
+
+    &.p-button-outlined{
+        background-color: transparent !important;
+        color: #184f6b;
+        border-radius: 6px;
+    }
+
+    &.p-button-danger{
+        background-color: red !important;
+        border-color: red !important;
+        border-radius: 6px;
+    }
+
+    &.p-dialog-header-close{
+        background-color: transparent!important;
+        border-color: transparent !important;
+    }
+}
+
+.mandatory {
+    color: red;
+}
+
+ul {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #184f6b;
+}
+
+a{
+    color: #184f6b;
+}
+
+/* Info icon styles */
+.info-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+  }
+  
+  /* Info message text */
+  .info-text {
+    flex-grow: 1;
+  }
+  
+  /* Close button for the info message */
+  .info-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #389e0d;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* Hover effect for the close button */
+  .info-close:hover {
+    color: #ff4d4f;
+  }
+  
+  .info-message {
+    display: flex;
+    align-items: center;
+    background-color: #3b82f624;
+    border: 1px solid #184f6b;
+    color: #184f6b;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 15px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
