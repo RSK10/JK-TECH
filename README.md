@@ -25,7 +25,6 @@ To run the mock server, open another terminal instance and run,
 `json-server --watch db.json --port 3000`
 
 The complete project documentation is available [here](https://docs.google.com/document/d/1oynLsKSDZXXwAOomLmXqBjpUZ42W5spiai0i1qXtSgo/edit?usp=sharing)
-The complete project documentation is available [here]()
 
 ## Build
 
